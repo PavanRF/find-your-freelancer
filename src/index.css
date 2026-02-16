@@ -101,6 +101,17 @@
     linear-gradient(135deg, hsl(240 10% 3.9%), hsl(240 10% 12%));
 }
 
+.landing-bg {
+  background: hsl(var(--background));
+}
+
+.dark .landing-bg {
+  background: 
+    radial-gradient(1200px 800px at 80% -10%, rgba(255,102,0,.18), transparent 60%),
+    radial-gradient(1000px 700px at -10% 110%, rgba(255,102,0,.12), transparent 60%),
+    hsl(var(--background));
+}
+
 .soft-glow {
   background:
     radial-gradient(600px 300px at 20% 10%, rgba(255,255,255,.06), transparent 60%),
@@ -108,8 +119,14 @@
 }
 
 .glass-card {
-  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+  background: linear-gradient(180deg, hsl(var(--card) / 0.8), hsl(var(--card) / 0.5));
   backdrop-filter: blur(8px);
+  border: 1px solid hsl(var(--border));
+  box-shadow: 0 16px 40px rgba(0,0,0,0.1);
+}
+
+.dark .glass-card {
+  background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
   border: 1px solid rgba(255,255,255,.08);
   box-shadow: 0 16px 40px rgba(2,6,23,0.35);
 }
