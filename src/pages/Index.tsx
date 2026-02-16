@@ -19,7 +19,10 @@ const Index = () => {
 
       <main className="flex-1 flex flex-col items-center justify-center p-6 text-center">
         <div className="max-w-3xl space-y-8 animate-fade-in">
-          <h2 className="text-5xl md:text-7xl font-bold text-white leading-tight">Connecting Cargo with Reliable Drivers
+          <h2 className="text-5xl md:text-7xl font-bold text-white leading-tight">Reliable Drivers
+
+
+
             <span className="text-primary">Reliable Drivers</span>
           </h2>
           <p className="text-xl text-gray-300 max-w-2xl mx-auto">
@@ -38,10 +41,7 @@ const Index = () => {
         </div>
 
         <div className="mt-20 grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl w-full">
-          {[
-          { title: "Post Jobs", icon: "📝", desc: "Clients can easily post delivery requirements and budget." },
-          { title: "Get Hired", icon: "🤝", desc: "Drivers can browse jobs and submit proposals instantly." },
-          { title: "Fast Delivery", icon: "🚀", desc: "Efficient matching means your cargo moves faster." }].
+          {[{ title: "Post Jobs", icon: "📝", desc: "Clients can easily post delivery requirements and budget." }, { title: "Get Hired", icon: "🤝", desc: "Drivers can browse jobs and submit proposals instantly." }, { title: "Fast Delivery", icon: "🚀", desc: "Efficient matching means your cargo moves faster." }].
           map((feature, i) =>
           <div key={i} className="glass-card p-8 rounded-2xl hover:-translate-y-2 transition-transform duration-300">
               <div className="text-4xl mb-4">{feature.icon}</div>
