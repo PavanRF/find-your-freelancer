@@ -7,6 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useToast } from "@/hooks/use-toast";
 import { LogOut, Plus, Truck } from "lucide-react";
+import PincodeLocationInput from "@/components/PincodeLocationInput";
 import { format } from "date-fns";
 import {
   Dialog,
@@ -182,24 +183,18 @@ const ClientDashboard = () => {
                       placeholder="Describe the load, weight, dimensions..."
                     />
                   </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Pickup Address</label>
-                    <Input
-                      required
-                      value={newJob.pickup_address}
-                      onChange={(e) => setNewJob({ ...newJob, pickup_address: e.target.value })}
-                      placeholder="e.g. 123 Main St, New York, NY"
-                    />
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-medium">Drop-off Address</label>
-                    <Input
-                      required
-                      value={newJob.dropoff_address}
-                      onChange={(e) => setNewJob({ ...newJob, dropoff_address: e.target.value })}
-                      placeholder="e.g. 456 Oak Ave, Los Angeles, CA"
-                    />
-                  </div>
+                  <PincodeLocationInput
+                    label="Pickup Address"
+                    placeholder="e.g. 123 Main St, New York, NY"
+                    value={newJob.pickup_address}
+                    onChange={(val) => setNewJob({ ...newJob, pickup_address: val })}
+                  />
+                  <PincodeLocationInput
+                    label="Drop-off Address"
+                    placeholder="e.g. 456 Oak Ave, Los Angeles, CA"
+                    value={newJob.dropoff_address}
+                    onChange={(val) => setNewJob({ ...newJob, dropoff_address: val })}
+                  />
                   <div className="grid grid-cols-2 gap-4">
                     <div className="space-y-2">
                       <label className="text-sm font-medium">Budget ($)</label>
