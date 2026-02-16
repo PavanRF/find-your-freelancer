@@ -63,7 +63,9 @@ export type Database = {
           created_at: string
           deadline: string | null
           description: string
+          dropoff_address: string | null
           id: string
+          pickup_address: string | null
           status: string | null
           title: string
         }
@@ -73,7 +75,9 @@ export type Database = {
           created_at?: string
           deadline?: string | null
           description: string
+          dropoff_address?: string | null
           id?: string
+          pickup_address?: string | null
           status?: string | null
           title: string
         }
@@ -83,7 +87,9 @@ export type Database = {
           created_at?: string
           deadline?: string | null
           description?: string
+          dropoff_address?: string | null
           id?: string
+          pickup_address?: string | null
           status?: string | null
           title?: string
         }

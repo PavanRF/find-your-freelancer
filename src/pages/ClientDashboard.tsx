@@ -24,6 +24,8 @@ interface Job {
   deadline: string;
   status: string;
   created_at: string;
+  pickup_address: string | null;
+  dropoff_address: string | null;
 }
 
 interface Application {
@@ -48,6 +50,8 @@ const ClientDashboard = () => {
     description: "",
     budget: "",
     deadline: "",
+    pickup_address: "",
+    dropoff_address: "",
   });
   const [isDialogOpen, setIsDialogOpen] = useState(false);
   const { toast } = useToast();
@@ -112,6 +116,8 @@ const ClientDashboard = () => {
         description: newJob.description,
         budget: parseFloat(newJob.budget),
         deadline: newJob.deadline,
+        pickup_address: newJob.pickup_address,
+        dropoff_address: newJob.dropoff_address,
       });
 
       if (error) throw error;
@@ -121,7 +127,7 @@ const ClientDashboard = () => {
         description: "Freelancers can now apply to your job.",
       });
       setIsDialogOpen(false);
-      setNewJob({ title: "", description: "", budget: "", deadline: "" });
+      setNewJob({ title: "", description: "", budget: "", deadline: "", pickup_address: "", dropoff_address: "" });
       fetchJobs();
     } catch (error: any) {
       toast({
@@ -174,6 +180,24 @@ const ClientDashboard = () => {
                       value={newJob.description}
                       onChange={(e) => setNewJob({ ...newJob, description: e.target.value })}
                       placeholder="Describe the load, weight, dimensions..."
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Pickup Address</label>
+                    <Input
+                      required
+                      value={newJob.pickup_address}
+                      onChange={(e) => setNewJob({ ...newJob, pickup_address: e.target.value })}
+                      placeholder="e.g. 123 Main St, New York, NY"
+                    />
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-medium">Drop-off Address</label>
+                    <Input
+                      required
+                      value={newJob.dropoff_address}
+                      onChange={(e) => setNewJob({ ...newJob, dropoff_address: e.target.value })}
+                      placeholder="e.g. 456 Oak Ave, Los Angeles, CA"
                     />
                   </div>
                   <div className="grid grid-cols-2 gap-4">
@@ -236,6 +260,12 @@ const ClientDashboard = () => {
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-600 dark:text-gray-300 mb-4">{job.description}</p>
+                    {job.pickup_address && (
+                      <p className="text-sm text-muted-foreground mb-1">📍 Pickup: {job.pickup_address}</p>
+                    )}
+                    {job.dropoff_address && (
+                      <p className="text-sm text-muted-foreground mb-3">📍 Drop-off: {job.dropoff_address}</p>
+                    )}
                     <div className="flex gap-4 text-sm text-gray-500">
                       <span>📅 Deadline: {job.deadline ? format(new Date(job.deadline), 'MMM dd, yyyy') : 'No deadline'}</span>
                       <span>🕒 Posted: {format(new Date(job.created_at), 'MMM dd, yyyy')}</span>

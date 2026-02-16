@@ -25,6 +25,8 @@ interface Job {
   status: string;
   created_at: string;
   client_id: string;
+  pickup_address: string | null;
+  dropoff_address: string | null;
 }
 
 interface Application {
@@ -181,6 +183,12 @@ const FreelancerDashboard = () => {
                   </div>
                 </CardHeader>
                 <CardContent className="flex-1">
+                  {job.pickup_address && (
+                    <p className="text-sm text-muted-foreground mb-1">📍 Pickup: {job.pickup_address}</p>
+                  )}
+                  {job.dropoff_address && (
+                    <p className="text-sm text-muted-foreground mb-2">📍 Drop-off: {job.dropoff_address}</p>
+                  )}
                   <p className="text-gray-600 dark:text-gray-300 line-clamp-3 text-sm">{job.description}</p>
                 </CardContent>
                 <CardFooter className="pt-4 border-t bg-gray-50/50 dark:bg-zinc-800/50">
